@@ -13,7 +13,7 @@ Data Transfer for Power Systems.
 
 """
 
-import collections
+from collections.abc import Sequence
 from abc import ABCMeta, abstractmethod
 from curses import def_prog_mode
 from struct import pack, unpack
@@ -233,7 +233,7 @@ class CommonFrame(metaclass=ABCMeta):
             self.set_soc(int(t))  # Get current timestamp
 
         if frasec:
-            if isinstance(frasec, collections.Sequence):
+            if isinstance(frasec, Sequence):
                 self.set_frasec(*frasec)
             else:
                 self.set_frasec(frasec)  # Just set fraction of second and use default values for other arguments.
